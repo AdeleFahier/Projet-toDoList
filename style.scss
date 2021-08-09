@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* UGLY FOR ME */
+    background-image: url('Images/double-bubble-dark.png');
+    // background-size: cover;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    max-height: 100vh; /*REMEMBER THIS ONE ADELE !*/
+}
+header{
+    padding: 2%;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.926);
+    img{
+        width: 60%;
+    }
+}
+h1{
+    margin-top: 5%;
+    font-weight: 200;
+    text-transform: uppercase;
+    // border: red solid 1px;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+}
+header,
+form{
+    // min-height: 10vh;
+    // max-height: 10vh; /* Gives to header and aform a minimum height of 20% of viewport height*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+form input,
+form button{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.864);
+}
+form button{
+    color: #af7e71;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form button:hover{
+    background: #af7e71;
+    color: white;
+}
+.todo-container{    /*DIV PRINCAPAL - CONTAINER*/
+    // border: green solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-list{    /* UL LIST CONTAINER*/
+    // border: red solid 1px;
+    min-width: 90%;
+    list-style: none;
+    margin-top: 3%;
+}
+.todo{   /*DIV GENERE A CHAQUE NOUVEL ELEMENT AJOUTE DEPUIS L'INPUT*/
+    margin: 0.5rem;
+    background: rgba(255, 255, 255, 0.657);
+    color: rgb(27, 25, 25);
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    align-items: center;
+    padding-left: 10px;
+    // border: rgb(0, 19, 128) solid 2px;
+    /*Make the transition between this class and the .completed or .fall(delete) class*/
+    /*All the change between this class and the two other class possible will have a smotth transition*/
+    transition: all 0.5s ease;
+}
+.todo li{
+     flex : 1; /* It's going to push the two button to the right*/
+     padding: 0rem 0.5rem;
+}
+.trash-btn, 
+.complete-btn{
+    border: none;
+    background: #634f4a;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+}
+.complete-btn{
+    background: #c69e93;
+}
+.fa-trash,
+.fa-check{
+    /* We can not click only on icon anymore */
+    pointer-events: none; 
+}
+.completed{ /*Style for our todo item when it's check as done*/
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+.fall{ /*style for our todo item when it's deleted*/
+    /* translate(8rem) : it will push it down (-8rem --> will push it up)*/
+    /* rotateZ : For the rotation on the right with the Z axe*/
+    transform: translateY(8rem) rotateZ(20deg); 
+    opacity: 0; /* Opacity set to 0 to make it disappear*/
+}
+
+/*STYLE SELECTED BUTTON*/
+
+/*First we have to remove all the default css of the selected button*/
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none !important;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+.select{ /*The div around the select element*/
+    // border: blue 1px solid;
+    margin: 1rem;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden; /*Permet de tout bien garder à l'intérieur de cette div visuellement*/
+}
+select{
+    color: #634f4a;
+    background: rgba(255, 255, 255, 0.837);
+    width: 10rem;
+    cursor: pointer;
+    padding: 0.6rem;
+}
+.select::after{
+    content: "\25BC"; /* This is going to create a nice arrow*/
+    position: absolute;
+    background: white;
+    color: #c69e93;
+    top: 0;
+    right: 0;
+    padding: 0.6rem;
+    pointer-events: none;
+}
+.select:hover::after{
+    background: #c69e93;
+    color: white;
+} 
+
+
+// MEDIA QUERIES RESPONSIVE
+
+
+@media screen and (min-width: 768px) {
+    header img{
+        width: 45%;
+    }
+    .todo-list{   
+        min-width: 70%;   
+    }
+    .todo{
+        font-size: 1rem;
+    }
+    h1{
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    header img{
+        width: 30%;
+    }
+    .todo-list{   
+        min-width: 60%;   
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    header img{
+        width: 25%;
+    }
+    .todo-list{   
+        min-width: 50%;   
+    }
+}
